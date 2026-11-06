@@ -1,22 +1,40 @@
-# Network Architecture
 
-This folder contains the network architecture of the TechnoPlus security audit laboratory.
+# Network Architecture – TechnoPlus
 
-## Laboratory Components
+## 1. Network Topology
 
-- Ubuntu Desktop: Security auditing machine.
-- Ubuntu Server: Target server hosting Apache, DVWA and SSH.
-- VirtualBox: Virtualization platform.
+```mermaid
+flowchart TB
+    A["Ubuntu Desktop<br/>Security Audit Machine<br/>192.168.10.10<br/>Nmap | Nikto | Burp Suite"]
 
-## IP Addressing
+    N["VirtualBox Internal Network<br/>192.168.10.0/24"]
 
-| Machine | IP Address |
-|---|---|
-| Ubuntu Desktop | 192.168.10.10 |
-| Ubuntu Server | 192.168.10.20 |
+    B["Ubuntu Server<br/>TechnoPlus Target Server<br/>192.168.10.20<br/>Apache | DVWA | SSH"]
 
-## Network Configuration
+    A <--> N
+    N <--> B
+```
 
-Both virtual machines are connected through an isolated VirtualBox Internal Network.
+## 2. Infrastructure Components
 
-The network topology diagram will be added here.
+| Machine | Role | IP Address |
+|---|---|---|
+| Ubuntu Desktop | Audit workstation | 192.168.10.10 |
+| Ubuntu Server | Target server | 192.168.10.20 |
+
+## 3. Network Configuration
+
+- Virtualization: Oracle VirtualBox
+- Network Type: Internal Network
+- Network Address: 192.168.10.0/24
+- Subnet Mask: 255.255.255.0
+
+## 4. Description
+
+Ubuntu Desktop is used to perform security assessments against Ubuntu Server.
+
+Both virtual machines communicate through an isolated VirtualBox internal network.
+
+## 5. Project Status
+
+Planned architecture. IP addresses and services will be verified during implementation.
